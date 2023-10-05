@@ -7,12 +7,54 @@
 
 import UIKit
 
-class SplashViewController: UIViewController {
 
+
+//MARK: - PROTOCOLS
+protocol SplashViewProtocol {
+    func showLoading(_ show: Bool)
+    func navigateToHome()
+}
+
+
+//MARK: - CLASS
+class SplashViewController: UIViewController {
+    
     @IBOutlet weak var activitiIndicator: UIActivityIndicatorView!
+    
+    var viewModel: SplashViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel = SplashViewModel()
+        viewModel?.onViewsLoaded()
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        activitiIndicator.stopAnimating()
+    }
+}
+
+
+//MARK: - EXTENSIONS
+
+extension SplashViewController: SplashViewProtocol {
+    
+    //Método cargar activity indicator
+    func showLoading(_ show: Bool) {
+        switch show {
+        case true where !activitiIndicator.isAnimating:
+            activitiIndicator.startAnimating()
+        case false where activitiIndicator.isAnimating:
+            activitiIndicator.stopAnimating()
+        default: break
+        }
+    }
+    
+    //Metodo para navegar a la home
+    func navigateToHome() {
+        let nextVC = HomeTableViewController()
+        navigationController?.setViewControllers([nextVC], animated: true)
+    }
+    
+    
 }
