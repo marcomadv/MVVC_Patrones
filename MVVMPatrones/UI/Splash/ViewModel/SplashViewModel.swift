@@ -15,7 +15,7 @@ protocol SplashViewModelProtocol {
 //MARK: - CLASS
 final class SplashViewModel {
     
-    var viewDelegate: SplashViewProtocol?
+    private weak var viewDelegate: SplashViewProtocol?
     
     init(viewDelegate: SplashViewProtocol? = nil) {
         self.viewDelegate = viewDelegate

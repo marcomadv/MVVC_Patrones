@@ -10,7 +10,7 @@ import UIKit
 
 
 //MARK: - PROTOCOLS
-protocol SplashViewProtocol {
+protocol SplashViewProtocol: AnyObject {
     func showLoading(_ show: Bool)
     func navigateToHome()
 }
@@ -25,7 +25,6 @@ class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = SplashViewModel()
         viewModel?.onViewsLoaded()
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -53,8 +52,8 @@ extension SplashViewController: SplashViewProtocol {
     //Metodo para navegar a la home
     func navigateToHome() {
         let nextVC = HomeTableViewController()
+        nextVC.viewModel = homeViewModel(viewDelegate: nextVC)
+        
         navigationController?.setViewControllers([nextVC], animated: true)
     }
-    
-    
 }
