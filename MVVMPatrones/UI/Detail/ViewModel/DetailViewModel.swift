@@ -12,14 +12,6 @@ protocol DetailViewModelProtocol {
     func onViewsLoaded()
     func getCharacter() -> CharacterModel
 }
-
-
-
-
-
-
-
-
 //MARK: - CLASS
 final class DetailViewModel {
     

@@ -24,7 +24,7 @@ var sampleCharacterData: CharactersModel = [
     CharacterModel(name: "Bart Simpson",
                    job: "Estudiante en la Escuela primaria de Springfield",
                    image: "bart_simpson",
-                   description: "conocido como El Barto y Bartman , es el hijo mayor travieso, rebelde, incomprendido y potencialmente peligroso de Homer y Marge Simpson, y el hermano de Lisa y Maggie Simpson"),
+                   description: "Conocido como El Barto y Bartman , es el hijo mayor travieso, rebelde, incomprendido y potencialmente peligroso de Homer y Marge Simpson, y el hermano de Lisa y Maggie Simpson"),
     CharacterModel(name: "Homer Simpson",
                    job: "Inspector de Seguridad Nuclear Ex Supervisor Técnico",
                    image: "homer_simpson",

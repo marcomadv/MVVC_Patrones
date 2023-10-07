@@ -50,5 +50,4 @@ extension DetailViewController: DetailViewControllerProtocol {
         update(image: data.image)
         update(description: data.description)
     }
-    
 }
