@@ -72,7 +72,8 @@ extension HomeTableViewController: HomeViewProtocol {
     
     func navigateToDetail(with data: CharacterModel?) {
         guard let data else { return }
-        let nextVC = DetailViewController(characterData: data)
+        let nextVC = DetailViewController()
+        nextVC.viewModel = DetailViewModel(viewDelegate: nextVC, characterData: data)
         navigationController?.show(nextVC, sender: nil)
     }
     

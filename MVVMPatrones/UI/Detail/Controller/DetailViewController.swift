@@ -7,34 +7,27 @@
 
 import UIKit
 
+// MARK: - PROTOCOL
+protocol DetailViewControllerProtocol: AnyObject {
+    func updateviews()
+}
+
+// MARK: - CLASS
 class DetailViewController: UIViewController {
 
-    var characterData: CharacterModel
+    var viewModel: DetailViewModelProtocol?
 
     @IBOutlet weak var imageDetail: UIImageView!
     @IBOutlet weak var nameDetail: UILabel!
     @IBOutlet weak var descriptionDetail: UITextView!
     
-    init(characterData:  CharacterModel) {
-        self.characterData = characterData
-        super.init(nibName: nil, bundle: nil)
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateView(data: characterData)
+        viewModel?.onViewsLoaded()
      
     }
 
-    
-    func updateView(data: CharacterModel) {
-        update(name: data.name)
-        update(image: data.image)
-        update(description: data.description)
-    }
     private func update(name: String?) {
         nameDetail.text = name ?? ""
     }
@@ -44,7 +37,18 @@ class DetailViewController: UIViewController {
     private func update(image: String?) {
         imageDetail.image = UIImage(named: image ?? "")
     }
-    
- 
+}
 
+//MARK: - EXTENSION
+
+extension DetailViewController: DetailViewControllerProtocol {
+    func updateviews() {
+        guard let data = viewModel?.getCharacter() else {
+            return
+        }
+        update(name: data.name)
+        update(image: data.image)
+        update(description: data.description)
+    }
+    
 }
