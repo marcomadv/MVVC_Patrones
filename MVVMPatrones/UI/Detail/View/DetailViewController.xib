@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="MVVMPatrones" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionDetail" destination="qAn-iH-lon" id="TNu-21-7wA"/>
+                <outlet property="imageDetail" destination="uFX-5n-wYT" id="Xus-T8-dWA"/>
+                <outlet property="nameDetail" destination="ou1-w5-iqK" id="TeE-Dn-QDD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

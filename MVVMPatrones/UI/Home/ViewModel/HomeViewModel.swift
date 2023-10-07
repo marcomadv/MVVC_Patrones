@@ -52,17 +52,13 @@ extension homeViewModel: HomeViewModelProtocol {
         viewDelegate?.navigateToDetail(with: data)
         
     }
-    
-    
     func data(at index: Int) -> CharacterModel? {
         guard index < dataCount else { return nil }
         return viewData[index]
     }
-    
     var dataCount: Int {
         viewData.count
     }
-    
     func onViewsLoaded() {
         loadData()
     }

@@ -9,21 +9,42 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    var characterData: CharacterModel
+
+    @IBOutlet weak var imageDetail: UIImageView!
+    @IBOutlet weak var nameDetail: UILabel!
+    @IBOutlet weak var descriptionDetail: UITextView!
+    
+    init(characterData:  CharacterModel) {
+        self.characterData = characterData
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateView(data: characterData)
+     
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func updateView(data: CharacterModel) {
+        update(name: data.name)
+        update(image: data.image)
+        update(description: data.description)
     }
-    */
+    private func update(name: String?) {
+        nameDetail.text = name ?? ""
+    }
+    private func update(description: String?) {
+        descriptionDetail.text = description ?? ""
+    }
+    private func update(image: String?) {
+        imageDetail.image = UIImage(named: image ?? "")
+    }
+    
+ 
 
 }
